@@ -1,74 +1,104 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import {
+  Text,
+  View,
+  ScrollView,
+  Button,
+  Image,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity 
+} from "react-native";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
 
-export default function HomeScreen() {
+export default function Index() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
+    <GestureHandlerRootView>
+      <ScrollView>
+        <View style={styles.container}>
         <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12'
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+            source={{
+              uri: "https://store-images.s-microsoft.com/image/apps.1719.9007199266245564.44dc7699-748d-4c34-ba5e-d04eb48f7960.abf46174-2d32-4f53-a6cd-644d5b2be452",
+              width: 100,
+              height: 100,
+            }}
+          />
+          <Text style={styles.text1}>Linkedin</Text>
+          <Text style={styles.text2}>Masukan Email</Text>
+          <TextInput style={styles.inputtext1} placeholder="" />
+          <Text style={styles.text3}>Kata Sandi</Text>
+          <TextInput style={styles.inputtext2} placeholder="" />
+          <TouchableOpacity style={styles.button1}onPress={()=>alert('Kata Sandi Salah')}>
+            <Text>Login</Text>
+          </TouchableOpacity>
+          <TouchableOpacity  style={styles.button2}onPress={()=>alert()}>
+            <Text style={styles.text4}>Lupa Kata Sandi</Text>
+    
+          </TouchableOpacity>
+          
+          
+        </View>
+      </ScrollView>
+    </GestureHandlerRootView>
   );
 }
+const styles=StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#F5FCFF",
+},
+button1:{
+  backgroundColor: "blue",
+  borderRadius:5,
+  borderWidth:1,
+  fontSize:20,
+  width:300,
+  height:30,
+  margin:10,
+  alignItems:"center"
+},
+button2:{
 
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+ right:93,
+},
+text4:{
+ color:"blue",
+},
+text1:{
+  fontFamily:"Arial",
+  fontSize:50,
+  color:"black",
+},
+text3:{
+  fontFamily:"Arial",
+  fontSize:15,
+  color:"black",
+  right:110,
+},
+text2:{
+  fontFamily:"Arial",
+  fontSize:15,
+  color:"black",
+  right:61,
+},
+inputtext1:{
+  color: "black",
+  borderRadius:5,
+  borderWidth:1,
+  fontSize:20,
+  width:300,
+ },
+ inputtext2:{
+   color: "black",
+   borderRadius:5,
+   borderWidth:1,
+   fontSize:20,
+   width:300,
+   height:30,
+   marginTop:10
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-});
+
+
+})
